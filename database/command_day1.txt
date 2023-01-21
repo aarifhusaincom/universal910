@@ -1,0 +1,479 @@
+(base) administrator@LAP4:~$ sudo service mongod start
+[sudo] password for administrator: 
+(base) administrator@LAP4:~$ mongo
+MongoDB shell version v4.0.28
+connecting to: mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("3460f68d-54fc-4774-acfc-67c2020ca9f6") }
+MongoDB server version: 4.0.28
+Server has startup warnings: 
+2023-01-17T08:48:36.852+0530 I STORAGE  [initandlisten] 
+2023-01-17T08:48:36.852+0530 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2023-01-17T08:48:36.852+0530 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2023-01-17T08:48:38.337+0530 I CONTROL  [initandlisten] 
+2023-01-17T08:48:38.337+0530 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2023-01-17T08:48:38.337+0530 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2023-01-17T08:48:38.337+0530 I CONTROL  [initandlisten] 
+---
+Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+and anyone you share the URL with. MongoDB may use this information to make product
+improvements and to suggest MongoDB products and deployment options to you.
+
+To enable free monitoring, run the following command: db.enableFreeMonitoring()
+To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+
+> 
+> show dbs
+admin                 0.000GB
+config                0.000GB
+local                 0.000GB
+mernstackbatch89      0.000GB
+postkrde              0.000GB
+reactbatch1011-28nov  0.000GB
+reactbatch910         0.000GB
+stackbatch1011        0.000GB
+stackbatch24-30dec    0.000GB
+stackbatch45          0.000GB
+stackbatch89-8dec     0.000GB
+stackbatch89-checck   0.000GB
+test                  0.000GB
+testdb                0.000GB
+> use stackbatch910-17jan
+switched to db stackbatch910-17jan
+> show dbs
+admin                 0.000GB
+config                0.000GB
+local                 0.000GB
+mernstackbatch89      0.000GB
+postkrde              0.000GB
+reactbatch1011-28nov  0.000GB
+reactbatch910         0.000GB
+stackbatch1011        0.000GB
+stackbatch24-30dec    0.000GB
+stackbatch45          0.000GB
+stackbatch89-8dec     0.000GB
+stackbatch89-checck   0.000GB
+test                  0.000GB
+testdb                0.000GB
+> db
+> db.
+Display all 103 possibilities? (y or n)
+db.adminCommand(
+db.aggregate(
+db.auth(
+db.changeUserPassword(
+db.cloneCollection(
+db.cloneDatabase(
+db.commandHelp(
+db.constructor
+db.copyDatabase(
+db.createCollection(
+db.createRole(
+db.createUser(
+db.createView(
+db.currentOP(
+db.currentOp(
+db.dbEval(
+db.disableFreeMonitoring(
+db.dropAllRoles(
+db.dropAllUsers(
+db.dropDatabase(
+db.dropRole(
+db.dropUser(
+db.enableFreeMonitoring(
+db.eval(
+db.forceError(
+db.fsyncLock(
+db.fsyncUnlock(
+db.getCollection(
+db.getCollectionInfos(
+db.getCollectionNames(
+db.getFreeMonitoringStatus(
+db.getLastError(
+db.getLastErrorCmd(
+db.getLastErrorObj(
+db.getLogComponents(
+db.getMongo(
+db.getName(
+db.getPrevError(
+db.getProfilingLevel(
+db.getProfilingStatus(
+db.getQueryOptions(
+db.getReplicationInfo(
+db.getRole(
+db.getRoles(
+db.getSecondaryOk(
+db.getSession(
+db.getSiblingDB(
+db.getSisterDB(
+db.getSlaveOk(
+db.getUser(
+db.getUsers(
+db.getWriteConcern(
+db.grantPrivilegesToRole(
+db.grantRolesToRole(
+db.grantRolesToUser(
+db.group(
+db.groupcmd(
+db.groupeval(
+db.hasOwnProperty
+db.hello(
+db.help(
+db.hostInfo(
+db.isMaster(
+db.killOP(
+db.killOp(
+db.listCommands(
+db.loadServerScripts(
+db.logout(
+db.printCollectionStats(
+db.printReplicationInfo(
+db.printSecondaryReplicationInfo(
+db.printShardingStatus(
+db.printSlaveReplicationInfo(
+db.propertyIsEnumerable
+db.prototype
+db.removeUser(
+db.repairDatabase(
+db.resetError(
+db.revokePrivilegesFromRole(
+db.revokeRolesFromRole(
+db.revokeRolesFromUser(
+db.runCommand(
+db.runCommandWithMetadata(
+db.runReadCommand(
+db.serverBits(
+db.serverBuildInfo(
+db.serverCmdLineOpts(
+db.serverStatus(
+db.setLogLevel(
+db.setProfilingLevel(
+db.setSecondaryOk(
+db.setSlaveOk(
+db.setWriteConcern(
+db.shutdownServer(
+db.stats(
+db.toLocaleString
+db.toString(
+db.tojson(
+db.unsetWriteConcern(
+db.updateRole(
+db.updateUser(
+db.valueOf
+db.version(
+> db.
+... 
+... 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> db.createCollection("data")
+{ "ok" : 1 }
+> db.createCollection("data1",{"max":100,"size":10000,"capped":true})
+{ "ok" : 1 }
+> show collections
+data
+data1
+> show dbs
+admin                 0.000GB
+config                0.000GB
+local                 0.000GB
+mernstackbatch89      0.000GB
+postkrde              0.000GB
+reactbatch1011-28nov  0.000GB
+reactbatch910         0.000GB
+stackbatch1011        0.000GB
+stackbatch24-30dec    0.000GB
+stackbatch45          0.000GB
+stackbatch89-8dec     0.000GB
+stackbatch89-checck   0.000GB
+stackbatch910-17jan   0.000GB
+test                  0.000GB
+testdb                0.000GB
+> 
+> db.data.insert({"rno":1001,"name":"jarvis","phy":23,"che":67,"mat":87})
+WriteResult({ "nInserted" : 1 })
+> db.data.insert([{"rno":1001,"name":"jarvis","phy":23,"che":67,"mat":87},])^C
+bye
+(base) administrator@LAP4:~$ mongo
+MongoDB shell version v4.0.28
+connecting to: mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("d500fd73-4a38-45bb-bd0e-34bed418564f") }
+MongoDB server version: 4.0.28
+Server has startup warnings: 
+2023-01-17T08:48:36.852+0530 I STORAGE  [initandlisten] 
+2023-01-17T08:48:36.852+0530 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2023-01-17T08:48:36.852+0530 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2023-01-17T08:48:38.337+0530 I CONTROL  [initandlisten] 
+2023-01-17T08:48:38.337+0530 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2023-01-17T08:48:38.337+0530 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2023-01-17T08:48:38.337+0530 I CONTROL  [initandlisten] 
+---
+Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+and anyone you share the URL with. MongoDB may use this information to make product
+improvements and to suggest MongoDB products and deployment options to you.
+
+To enable free monitoring, run the following command: db.enableFreeMonitoring()
+To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+
+> use stackbatch910-17jan
+switched to db stackbatch910-17jan
+> db.data.insert([{"rno":1001,"name":"jarvis","phy":23,"che":67,"mat":87},{"rno":1002,"name":"jany","phy":73,"che":65,"mat":81}])
+BulkWriteResult({
+	"writeErrors" : [ ],
+	"writeConcernErrors" : [ ],
+	"nInserted" : 2,
+	"nUpserted" : 0,
+	"nMatched" : 0,
+	"nModified" : 0,
+	"nRemoved" : 0,
+	"upserted" : [ ]
+})
+> 
+> db.data.insertOne({"rno":1003,"name":"john","phy":21,"che":16,"mat":88})
+{
+	"acknowledged" : true,
+	"insertedId" : ObjectId("63c628a42f2e19e8415b6d01")
+}
+> db.data.insertMany([{"rno":1004,"name":"test1","phy":3,"che":7,"mat":8},{"rno":1005,"name":"pankaj","phy":71,"che":15,"mat":89}])
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("63c628fc2f2e19e8415b6d02"),
+		ObjectId("63c628fc2f2e19e8415b6d03")
+	]
+}
+> 
+
+> db.data.find().pretty()
+{
+	"_id" : ObjectId("63c627c02927e03b5e060650"),
+	"rno" : 1001,
+	"name" : "jarvis",
+	"phy" : 23,
+	"che" : 67,
+	"mat" : 87
+}
+{
+	"_id" : ObjectId("63c6282d2f2e19e8415b6cff"),
+	"rno" : 1001,
+	"name" : "jarvis",
+	"phy" : 23,
+	"che" : 67,
+	"mat" : 87
+}
+{
+	"_id" : ObjectId("63c6282d2f2e19e8415b6d00"),
+	"rno" : 1002,
+	"name" : "jany",
+	"phy" : 73,
+	"che" : 65,
+	"mat" : 81
+}
+{
+	"_id" : ObjectId("63c628a42f2e19e8415b6d01"),
+	"rno" : 1003,
+	"name" : "john",
+	"phy" : 21,
+	"che" : 16,
+	"mat" : 88
+}
+{
+	"_id" : ObjectId("63c628fc2f2e19e8415b6d02"),
+	"rno" : 1004,
+	"name" : "test1",
+	"phy" : 3,
+	"che" : 7,
+	"mat" : 8
+}
+{
+	"_id" : ObjectId("63c628fc2f2e19e8415b6d03"),
+	"rno" : 1005,
+	"name" : "pankaj",
+	"phy" : 71,
+	"che" : 15,
+	"mat" : 89
+}
+> db.data.find()
+{ "_id" : ObjectId("63c627c02927e03b5e060650"), "rno" : 1001, "name" : "jarvis", "phy" : 23, "che" : 67, "mat" : 87 }
+{ "_id" : ObjectId("63c6282d2f2e19e8415b6cff"), "rno" : 1001, "name" : "jarvis", "phy" : 23, "che" : 67, "mat" : 87 }
+{ "_id" : ObjectId("63c6282d2f2e19e8415b6d00"), "rno" : 1002, "name" : "jany", "phy" : 73, "che" : 65, "mat" : 81 }
+{ "_id" : ObjectId("63c628a42f2e19e8415b6d01"), "rno" : 1003, "name" : "john", "phy" : 21, "che" : 16, "mat" : 88 }
+{ "_id" : ObjectId("63c628fc2f2e19e8415b6d02"), "rno" : 1004, "name" : "test1", "phy" : 3, "che" : 7, "mat" : 8 }
+{ "_id" : ObjectId("63c628fc2f2e19e8415b6d03"), "rno" : 1005, "name" : "pankaj", "phy" : 71, "che" : 15, "mat" : 89 }
+> db.data.find().pretty()
+{
+	"_id" : ObjectId("63c627c02927e03b5e060650"),
+	"rno" : 1001,
+	"name" : "jarvis",
+	"phy" : 23,
+	"che" : 67,
+	"mat" : 87
+}
+{
+	"_id" : ObjectId("63c6282d2f2e19e8415b6cff"),
+	"rno" : 1001,
+	"name" : "jarvis",
+	"phy" : 23,
+	"che" : 67,
+	"mat" : 87
+}
+{
+	"_id" : ObjectId("63c6282d2f2e19e8415b6d00"),
+	"rno" : 1002,
+	"name" : "jany",
+	"phy" : 73,
+	"che" : 65,
+	"mat" : 81
+}
+{
+	"_id" : ObjectId("63c628a42f2e19e8415b6d01"),
+	"rno" : 1003,
+	"name" : "john",
+	"phy" : 21,
+	"che" : 16,
+	"mat" : 88
+}
+{
+	"_id" : ObjectId("63c628fc2f2e19e8415b6d02"),
+	"rno" : 1004,
+	"name" : "test1",
+	"phy" : 3,
+	"che" : 7,
+	"mat" : 8
+}
+{
+	"_id" : ObjectId("63c628fc2f2e19e8415b6d03"),
+	"rno" : 1005,
+	"name" : "pankaj",
+	"phy" : 71,
+	"che" : 15,
+	"mat" : 89
+}
+> db.data.find().pretty()
+> db.data.find({"rno":1002}).pretty()
+{
+	"_id" : ObjectId("63c6282d2f2e19e8415b6d00"),
+	"rno" : 1002,
+	"name" : "jany",
+	"phy" : 73,
+	"che" : 65,
+	"mat" : 81
+}
+> db.data.find({"rno":1002,"name":"jany"}).pretty()
+{
+	"_id" : ObjectId("63c6282d2f2e19e8415b6d00"),
+	"rno" : 1002,
+	"name" : "jany",
+	"phy" : 73,
+	"che" : 65,
+	"mat" : 81
+}
+> db.data.find({"rno":1002,"name":"jany1"}).pretty()
+> db.data.find({"rno":1002,"name":"jany1"}).pretty()
+> db.data.find({"rno":1002,"name":"jany"}).pretty()
+{
+	"_id" : ObjectId("63c6282d2f2e19e8415b6d00"),
+	"rno" : 1002,
+	"name" : "jany",
+	"phy" : 73,
+	"che" : 65,
+	"mat" : 81
+}
+> db.data.find({"phy":{"$gt":50}}).pretty()
+{
+	"_id" : ObjectId("63c6282d2f2e19e8415b6d00"),
+	"rno" : 1002,
+	"name" : "jany",
+	"phy" : 73,
+	"che" : 65,
+	"mat" : 81
+}
+{
+	"_id" : ObjectId("63c628fc2f2e19e8415b6d03"),
+	"rno" : 1005,
+	"name" : "pankaj",
+	"phy" : 71,
+	"che" : 15,
+	"mat" : 89
+}
+> db.data.find({"phy":{"$gte":50}}).pretty()
+{
+	"_id" : ObjectId("63c6282d2f2e19e8415b6d00"),
+	"rno" : 1002,
+	"name" : "jany",
+	"phy" : 73,
+	"che" : 65,
+	"mat" : 81
+}
+{
+	"_id" : ObjectId("63c628fc2f2e19e8415b6d03"),
+	"rno" : 1005,
+	"name" : "pankaj",
+	"phy" : 71,
+	"che" : 15,
+	"mat" : 89
+}
+> db.data.find({"phy":{"$lte":50}}).pretty()
+{
+	"_id" : ObjectId("63c627c02927e03b5e060650"),
+	"rno" : 1001,
+	"name" : "jarvis",
+	"phy" : 23,
+	"che" : 67,
+	"mat" : 87
+}
+{
+	"_id" : ObjectId("63c6282d2f2e19e8415b6cff"),
+	"rno" : 1001,
+	"name" : "jarvis",
+	"phy" : 23,
+	"che" : 67,
+	"mat" : 87
+}
+{
+	"_id" : ObjectId("63c628a42f2e19e8415b6d01"),
+	"rno" : 1003,
+	"name" : "john",
+	"phy" : 21,
+	"che" : 16,
+	"mat" : 88
+}
+{
+	"_id" : ObjectId("63c628fc2f2e19e8415b6d02"),
+	"rno" : 1004,
+	"name" : "test1",
+	"phy" : 3,
+	"che" : 7,
+	"mat" : 8
+}
+> db.data.find({"phy":{"$lte":50}}).pretty()
+> db.data.find({"phy":{"eq":71}}).pretty()
+> db.data.find({"phy":{"$eq":71}}).pretty()
+{
+	"_id" : ObjectId("63c628fc2f2e19e8415b6d03"),
+	"rno" : 1005,
+	"name" : "pankaj",
+	"phy" : 71,
+	"che" : 15,
+	"mat" : 89
+}
+> 
+

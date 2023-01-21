@@ -1,0 +1,10 @@
+Node implementational problems :-
+
+-> Manual req-res management
+-> Manual response header management
+-> Manual handelling for url routing & method checking
+-> Unavaibility of template pages
+-> Problem in static file loading
+  
+
+

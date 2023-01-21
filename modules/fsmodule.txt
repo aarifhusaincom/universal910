@@ -1,0 +1,42 @@
+fs module : It stands for file system module ,
+used to perform file handelling operation. This
+module comes with variety of functions used to 
+perform various file related operations like 
+read , write , append etc. (LEVEL 1)
+
+File handelling by using file functions :- fs 
+module come with variety of synchronous & 
+asynchronous functions used to work on files. 
+
+File handelling by using file streams :- Stream denotes to flow of data , use to transmit bulk amount of content from one location to another used in data transmissions , network programming & chat applications.
+
+-> readable streams
+-> writable streams
+-> duplex stream
+-> transform stream
+
+Note : Internally streams on working will emit multiple events , by handelling a tracking mechanism can be deployed on streams
+
+data : it will be emitted when chunk is transmitted by stream
+
+end : it will be emitted when chunk transmission is completed or file reading gets end
+
+finish : it will be emitted when content adding is completed in file
+
+error : it will be emmitted for any error in streams 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,15 @@
+Http Module : It is node module which is used to deploy server side for web based application , this module comes with multiple functions & properties used to handle server request & response.
+
+It is a mechanism to establish relationship between client side & server side
+
+client : web browser , REST client(postman)
+server : web server , web api
+
+Note :- level 1 dependency
+		
+		http request
+	Client--------------->Server
+	      <---------------
+                http response 	
+
+ 

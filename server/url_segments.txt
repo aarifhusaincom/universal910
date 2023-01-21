@@ -1,0 +1,17 @@
+url : 
+
+http://localhost:8081   /login/p2/p3/p4/.....
+         s1                    s2
+
+url+data : query string
+         
+         s1               s2 
+http://localhost:8081   /login/p2/p3/p4/......
+?username=admin@gmail.com&password=admin123
+		  s3
+
+s1 : Domain
+s2 : Url path
+s3 : Data with url (query string) 
+
+req.url : s2+s3

@@ -1,0 +1,47 @@
+Middleware :- It is a function capable to work in between request response mechanism , it accept request if required it works on request & transmit request after changes to further application flow
+
+Uses :-
+
+* changes in request if required
+* common configuration at application level
+* settings at application level 
+
+Actual req-res flow :-
+
+		     request         	
+        client end ------------> server end
+		   <------------
+		     response	
+
+Middleware req-res flow :-
+
+            request           request    	
+   client end ----> middleware ----> server end
+          <------------------------------
+		     response	
+
+
+Types of middleware :-
+
+-> Application level middleware
+-> Route level middleware
+-> Builtin middleware
+-> Third party middleware
+
+--------------------------------------------------
+
+-> Route level middleware : To specify routes at application level , as per user capability we use route level middleware , this middleware is capable to invoked different different url routes as per url base path
+
+base url : http://localhost:3000/
+visitor : / , /about , /contact , /register , /login , /service
+
+base url : http://localhost:3000/admin
+admin : /adminhome , /manageusers , /addcategory , /logout , /cpadmin , /epadmin
+
+base url : http://localhost:3000/user
+user : /userhome , /viewcategory , /logout , /cpuser , /epuser
+     
+
+
+
+

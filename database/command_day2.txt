@@ -1,0 +1,434 @@
+(base) administrator@LAP4:~$ sudo service mongod start
+[sudo] password for administrator: 
+(base) administrator@LAP4:~$ mongo
+MongoDB shell version v4.0.28
+connecting to: mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("0497f39f-f6ec-421e-9888-8e45a5d37713") }
+MongoDB server version: 4.0.28
+Server has startup warnings: 
+2023-01-18T09:38:54.518+0530 I STORAGE  [initandlisten] 
+2023-01-18T09:38:54.518+0530 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2023-01-18T09:38:54.518+0530 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2023-01-18T09:38:55.539+0530 I CONTROL  [initandlisten] 
+2023-01-18T09:38:55.539+0530 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2023-01-18T09:38:55.539+0530 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2023-01-18T09:38:55.539+0530 I CONTROL  [initandlisten] 
+---
+Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+and anyone you share the URL with. MongoDB may use this information to make product
+improvements and to suggest MongoDB products and deployment options to you.
+
+To enable free monitoring, run the following command: db.enableFreeMonitoring()
+To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+
+> 
+> use stackbatch910-17jan
+switched to db stackbatch910-17jan
+> show collections
+data
+data1
+> db.data.find().pretty()
+{
+	"_id" : ObjectId("63c627c02927e03b5e060650"),
+	"rno" : 1001,
+	"name" : "jarvis",
+	"phy" : 23,
+	"che" : 67,
+	"mat" : 87
+}
+{
+	"_id" : ObjectId("63c6282d2f2e19e8415b6cff"),
+	"rno" : 1001,
+	"name" : "jarvis",
+	"phy" : 23,
+	"che" : 67,
+	"mat" : 87
+}
+{
+	"_id" : ObjectId("63c6282d2f2e19e8415b6d00"),
+	"rno" : 1002,
+	"name" : "jany",
+	"phy" : 73,
+	"che" : 65,
+	"mat" : 81
+}
+{
+	"_id" : ObjectId("63c628a42f2e19e8415b6d01"),
+	"rno" : 1003,
+	"name" : "john",
+	"phy" : 21,
+	"che" : 16,
+	"mat" : 88
+}
+{
+	"_id" : ObjectId("63c628fc2f2e19e8415b6d02"),
+	"rno" : 1004,
+	"name" : "test1",
+	"phy" : 3,
+	"che" : 7,
+	"mat" : 8
+}
+{
+	"_id" : ObjectId("63c628fc2f2e19e8415b6d03"),
+	"rno" : 1005,
+	"name" : "pankaj",
+	"phy" : 71,
+	"che" : 15,
+	"mat" : 89
+}
+> 
+> db.data.find({"rno":1002,"name":"jany"}).pretty()
+{
+	"_id" : ObjectId("63c6282d2f2e19e8415b6d00"),
+	"rno" : 1002,
+	"name" : "jany",
+	"phy" : 73,
+	"che" : 65,
+	"mat" : 81
+}
+> db.data.find({$and:[{"rno":1002},{"name":"jany"}]}).pretty()
+{
+	"_id" : ObjectId("63c6282d2f2e19e8415b6d00"),
+	"rno" : 1002,
+	"name" : "jany",
+	"phy" : 73,
+	"che" : 65,
+	"mat" : 81
+}
+> db.data.find({$and:[{"rno":1002},{"name":"jani"}]}).pretty()
+> 
+> db.data.find({$or:[{"rno":1003},{"rno":"1005"}]}).pretty()
+{
+	"_id" : ObjectId("63c628a42f2e19e8415b6d01"),
+	"rno" : 1003,
+	"name" : "john",
+	"phy" : 21,
+	"che" : 16,
+	"mat" : 88
+}
+> db.data.find({$or:[{"rno":1003},{"rno":1005}]}).pretty()
+{
+	"_id" : ObjectId("63c628a42f2e19e8415b6d01"),
+	"rno" : 1003,
+	"name" : "john",
+	"phy" : 21,
+	"che" : 16,
+	"mat" : 88
+}
+{
+	"_id" : ObjectId("63c628fc2f2e19e8415b6d03"),
+	"rno" : 1005,
+	"name" : "pankaj",
+	"phy" : 71,
+	"che" : 15,
+	"mat" : 89
+}
+> db.data.find({$or:[{"rno":1003},{"rno":1015}]}).pretty()
+{
+	"_id" : ObjectId("63c628a42f2e19e8415b6d01"),
+	"rno" : 1003,
+	"name" : "john",
+	"phy" : 21,
+	"che" : 16,
+	"mat" : 88
+}
+> 
+> db.data.find({$and:[{"phy":{$gte:50}},{"phy":{$lte:80}}]})
+{ "_id" : ObjectId("63c6282d2f2e19e8415b6d00"), "rno" : 1002, "name" : "jany", "phy" : 73, "che" : 65, "mat" : 81 }
+{ "_id" : ObjectId("63c628fc2f2e19e8415b6d03"), "rno" : 1005, "name" : "pankaj", "phy" : 71, "che" : 15, "mat" : 89 }
+> db.data.find({$and:[{"phy":{$gte:50}},{"phy":{$lte:80}}]}).pretty()
+{
+	"_id" : ObjectId("63c6282d2f2e19e8415b6d00"),
+	"rno" : 1002,
+	"name" : "jany",
+	"phy" : 73,
+	"che" : 65,
+	"mat" : 81
+}
+{
+	"_id" : ObjectId("63c628fc2f2e19e8415b6d03"),
+	"rno" : 1005,
+	"name" : "pankaj",
+	"phy" : 71,
+	"che" : 15,
+	"mat" : 89
+}
+> 
+> db.data.find({$and:[{"phy":{$gte:50}},{"phy":{$lte:80}}]}).pretty()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+> db.data.update({"rno":1002},{$set:{"che":90,"mat":90}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.data.find({"rno":1002}).pretty()
+{
+	"_id" : ObjectId("63c6282d2f2e19e8415b6d00"),
+	"rno" : 1002,
+	"name" : "jany",
+	"phy" : 73,
+	"che" : 90,
+	"mat" : 90
+}
+> db.data.update({"rno":1008},{$set:{"che":90,"mat":90}})
+WriteResult({ "nMatched" : 0, "nUpserted" : 0, "nModified" : 0 })
+> db.data.update({"rno":1001},{$set:{"che":80,"mat":80}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.data.updateMany({"rno":1001},{$set:{"che":85,"mat":85}})
+{ "acknowledged" : true, "matchedCount" : 2, "modifiedCount" : 2 }
+> db.data.replace({"rno":1008},{$set:{"che":85,"mat":85}})
+2023-01-18T10:05:18.181+0530 E QUERY    [js] TypeError: db.data.replace is not a function :
+@(shell):1:1
+> db.data.replaceOne({"rno":1008},{$set:{"che":85,"mat":85}})
+2023-01-18T10:05:23.818+0530 E QUERY    [js] Error: the replace operation document must not contain atomic operators :
+DBCollection.prototype.replaceOne@src/mongo/shell/crud_api.js:463:1
+@(shell):1:1
+> db.data.
+> db.data.delete({"rno":1005})
+2023-01-18T10:07:34.331+0530 E QUERY    [js] TypeError: db.data.delete is not a function :
+@(shell):1:1
+> db.data.remove({"rno":1005})
+WriteResult({ "nRemoved" : 1 })
+> 
+
+
+
+
+
+
+
+
+
+
+
+> db.data.remove({"rno":1005})
+WriteResult({ "nRemoved" : 0 })
+> db.data.remove({"rno":1001})
+WriteResult({ "nRemoved" : 2 })
+> db.data.removeOne({"rno":1001})
+2023-01-18T10:09:06.604+0530 E QUERY    [js] TypeError: db.data.removeOne is not a function :
+@(shell):1:1
+> db.data.remove({"rno":1001})
+
+
+
+
+
+
+
+
+
+> db.data.find({"rno":1002})
+{ "_id" : ObjectId("63c6282d2f2e19e8415b6d00"), "rno" : 1002, "name" : "jany", "phy" : 73, "che" : 90, "mat" : 90 }
+> db.data.find({"rno":1002}).pretty()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+> db.data.find({"rno":1002}).pretty()
+{
+	"_id" : ObjectId("63c6282d2f2e19e8415b6d00"),
+	"rno" : 1002,
+	"name" : "jany",
+	"phy" : 73,
+	"che" : 90,
+	"mat" : 90
+}
+> db.data.find().pretty()
+{
+	"_id" : ObjectId("63c6282d2f2e19e8415b6d00"),
+	"rno" : 1002,
+	"name" : "jany",
+	"phy" : 73,
+	"che" : 90,
+	"mat" : 90
+}
+{
+	"_id" : ObjectId("63c628a42f2e19e8415b6d01"),
+	"rno" : 1003,
+	"name" : "john",
+	"phy" : 21,
+	"che" : 16,
+	"mat" : 88
+}
+{
+	"_id" : ObjectId("63c628fc2f2e19e8415b6d02"),
+	"rno" : 1004,
+	"name" : "test1",
+	"phy" : 3,
+	"che" : 7,
+	"mat" : 8
+}
+> db.data.find({"rno":1002}).pretty()
+> db.data.find({},{"rno":1002}).pretty()
+{ "_id" : ObjectId("63c6282d2f2e19e8415b6d00"), "rno" : 1002 }
+{ "_id" : ObjectId("63c628a42f2e19e8415b6d01"), "rno" : 1003 }
+{ "_id" : ObjectId("63c628fc2f2e19e8415b6d02"), "rno" : 1004 }
+> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+> db.data.find({"rno":1002},{"rno":1}).pretty()
+{ "_id" : ObjectId("63c6282d2f2e19e8415b6d00"), "rno" : 1002 }
+> db.data.find({"rno":1002},{"_id":0,"rno":1}).pretty()
+{ "rno" : 1002 }
+> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+> db.data.find({"rno":1002},{"_id":0,"rno":1}).pretty()
+{ "rno" : 1002 }
+> db.data.find({"rno":1002},{"_id":0,"rno":1,"name":1}).pretty()
+{ "rno" : 1002, "name" : "jany" }
+> db.data.find({},{"_id":0,"rno":1,"name":1}).pretty()
+{ "rno" : 1002, "name" : "jany" }
+{ "rno" : 1003, "name" : "john" }
+{ "rno" : 1004, "name" : "test1" }
+> 
+
+
+
+
+
+
+
+
+> db.data.find({},{"_id":0,"rno":1,"phy":1}).pretty()
+{ "rno" : 1002, "phy" : 73 }
+{ "rno" : 1003, "phy" : 21 }
+{ "rno" : 1004, "phy" : 3 }
+> db.data.find({},{"_id":0,"rno":1,"phy":1}).sort({"phy":1})
+{ "rno" : 1004, "phy" : 3 }
+{ "rno" : 1003, "phy" : 21 }
+{ "rno" : 1002, "phy" : 73 }
+> db.data.find({},{"_id":0,"rno":1,"phy":1}).sort({"phy":-1})
+{ "rno" : 1002, "phy" : 73 }
+{ "rno" : 1003, "phy" : 21 }
+{ "rno" : 1004, "phy" : 3 }
+> db.data.find({},{"_id":0,"rno":1,"phy":1}).sort({"phy":1})
+{ "rno" : 1004, "phy" : 3 }
+{ "rno" : 1003, "phy" : 21 }
+{ "rno" : 1002, "phy" : 73 }
+> db.data.find({},{"_id":0,"rno":1,"phy":1}).sort({"phy":-1})
+{ "rno" : 1002, "phy" : 73 }
+{ "rno" : 1003, "phy" : 21 }
+{ "rno" : 1004, "phy" : 3 }
+> 
+> db.data.find({},{"_id":0,"rno":1,"phy":1}).sort({"phy":-1}).limit(1)
+{ "rno" : 1002, "phy" : 73 }
+> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+> db.createCollection("emp")
+{ "ok" : 1 }
+> db.emp.insert({"eno":1001,"esalmon":"jan","esal":10000})
+WriteResult({ "nInserted" : 1 })
+> db.emp.insert({"eno":1002,"esalmon":"feb","esal":11000})
+WriteResult({ "nInserted" : 1 })
+> db.emp.insert({"eno":1001,"esalmon":"feb","esal":11000})
+WriteResult({ "nInserted" : 1 })
+> db.emp.insert({"eno":1002,"esalmon":"jan","esal":10500})
+WriteResult({ "nInserted" : 1 })
+> db.emp.insert({"eno":1001,"esalmon":"mar","esal":12000})
+WriteResult({ "nInserted" : 1 })
+> db.emp.insert({"eno":1002,"esalmon":"mar","esal":13000})
+WriteResult({ "nInserted" : 1 })
+> db.emp.insert({"eno":1003,"esalmon":"mar","esal":15000})
+WriteResult({ "nInserted" : 1 })
+> db.emp.aggregate({)
+...       $group: { _id: "$name", totalQuantity: { $sum: "$quantity" } }
+...    }
+2023-01-18T10:29:39.333+0530 E QUERY    [js] SyntaxError: invalid property id @(shell):1:18
+> db.emp.aggregate({$group: { _id: "$name", totalQuantity: { $sum: "$quantity"}}})
+> db.emp.aggregate({$group: { _id: "$eno", totalSalary: { $sum: "$esal"}}})
+{ "_id" : 1003, "totalSalary" : 15000 }
+{ "_id" : 1002, "totalSalary" : 34500 }
+{ "_id" : 1001, "totalSalary" : 33000 }
+> db.emp.aggregate({$group: { _id: "$eno", avgSalary: { $avg: "$esal"}}})
+{ "_id" : 1003, "avgSalary" : 15000 }
+{ "_id" : 1002, "avgSalary" : 11500 }
+{ "_id" : 1001, "avgSalary" : 11000 }
+> db.emp.aggregate({$group: { _id: "$eno", maxSalary: { $max: "$esal"}}})
+{ "_id" : 1003, "maxSalary" : 15000 }
+{ "_id" : 1002, "maxSalary" : 13000 }
+{ "_id" : 1001, "maxSalary" : 12000 }
+> db.emp.aggregate({$group: { _id: "$eno", minSalary: { $min: "$esal"}}})
+{ "_id" : 1003, "minSalary" : 15000 }
+{ "_id" : 1002, "minSalary" : 10500 }
+{ "_id" : 1001, "minSalary" : 10000 }
+> db.emp.aggregate({$group: { _id: "$eno", minSalary: { $first: "$esal"}}})
+> db.emp.aggregate({$group: { _id: "$eno", minSalary: { $first: "$esal"}}})
+{ "_id" : 1003, "minSalary" : 15000 }
+{ "_id" : 1002, "minSalary" : 11000 }
+{ "_id" : 1001, "minSalary" : 10000 }
+> db.emp.aggregate({$group: { _id: "$eno", lastSalary: { $last: "$esal"}}})
+{ "_id" : 1003, "lastSalary" : 15000 }
+{ "_id" : 1002, "lastSalary" : 13000 }
+{ "_id" : 1001, "lastSalary" : 12000 }
+> 
+
+
+
+
+
+
+
+

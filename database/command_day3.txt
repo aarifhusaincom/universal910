@@ -1,0 +1,287 @@
+(base) administrator@LAP4:~$ sudo service mongod start
+[sudo] password for administrator: 
+(base) administrator@LAP4:~$ mongo
+MongoDB shell version v4.0.28
+connecting to: mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("8011239c-48d1-49e0-9c9d-5536ac01a67c") }
+MongoDB server version: 4.0.28
+Server has startup warnings: 
+2023-01-19T08:21:42.573+0530 I STORAGE  [initandlisten] 
+2023-01-19T08:21:42.573+0530 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2023-01-19T08:21:42.573+0530 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2023-01-19T08:21:43.725+0530 I CONTROL  [initandlisten] 
+2023-01-19T08:21:43.725+0530 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2023-01-19T08:21:43.725+0530 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2023-01-19T08:21:43.725+0530 I CONTROL  [initandlisten] 
+---
+Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+and anyone you share the URL with. MongoDB may use this information to make product
+improvements and to suggest MongoDB products and deployment options to you.
+
+To enable free monitoring, run the following command: db.enableFreeMonitoring()
+To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+
+> 
+> use stackbatch910-17jan
+switched to db stackbatch910-17jan
+> show dbs
+admin                 0.000GB
+config                0.000GB
+local                 0.000GB
+mernstackbatch89      0.000GB
+postkrde              0.000GB
+reactbatch1011-28nov  0.000GB
+reactbatch910         0.000GB
+stackbatch1011        0.000GB
+stackbatch24-30dec    0.000GB
+stackbatch45          0.000GB
+stackbatch89-8dec     0.000GB
+stackbatch89-checck   0.000GB
+stackbatch910-17jan   0.000GB
+test                  0.000GB
+testdb                0.000GB
+> show collections
+data
+data1
+emp
+> 
+> db.data.find()
+{ "_id" : ObjectId("63c6282d2f2e19e8415b6d00"), "rno" : 1002, "name" : "jany", "phy" : 73, "che" : 90, "mat" : 90 }
+{ "_id" : ObjectId("63c628a42f2e19e8415b6d01"), "rno" : 1003, "name" : "john", "phy" : 21, "che" : 16, "mat" : 88 }
+{ "_id" : ObjectId("63c628fc2f2e19e8415b6d02"), "rno" : 1004, "name" : "test1", "phy" : 3, "che" : 7, "mat" : 8 }
+> db.data.find().pretty()
+{
+	"_id" : ObjectId("63c6282d2f2e19e8415b6d00"),
+	"rno" : 1002,
+	"name" : "jany",
+	"phy" : 73,
+	"che" : 90,
+	"mat" : 90
+}
+{
+	"_id" : ObjectId("63c628a42f2e19e8415b6d01"),
+	"rno" : 1003,
+	"name" : "john",
+	"phy" : 21,
+	"che" : 16,
+	"mat" : 88
+}
+{
+	"_id" : ObjectId("63c628fc2f2e19e8415b6d02"),
+	"rno" : 1004,
+	"name" : "test1",
+	"phy" : 3,
+	"che" : 7,
+	"mat" : 8
+}
+> db.data.find({"rno":120000}).pretty()
+> db.data.find({"rno":120000}).pretty()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+> db.createCollection("empDetails");
+{ "ok" : 1 }
+> db.empDetails.insert({"_id":1001,"enm":"test1"})
+WriteResult({ "nInserted" : 1 })
+> db.empDetails.insert({"_id":1002,"enm":"test1"})
+WriteResult({ "nInserted" : 1 })
+> db.empDetails.insert({"_id":1002,"enm":"test1"})
+WriteResult({
+	"nInserted" : 0,
+	"writeError" : {
+		"code" : 11000,
+		"errmsg" : "E11000 duplicate key error collection: stackbatch910-17jan.empDetails index: _id_ dup key: { : 1002.0 }"
+	}
+})
+> db.empDetails.insert({"_id":1002
+
+> db.data.createIndex({"name":1})
+{
+	"createdCollectionAutomatically" : false,
+	"numIndexesBefore" : 1,
+	"numIndexesAfter" : 2,
+	"ok" : 1
+}
+> db.data.dropIndex({"name":1})
+{ "nIndexesWas" : 2, "ok" : 1 }
+> 
+
+
+
+
+
+
+
+
+> db.data.find().pretty()
+{
+	"_id" : ObjectId("63c6282d2f2e19e8415b6d00"),
+	"rno" : 1002,
+	"name" : "jany",
+	"phy" : 73,
+	"che" : 90,
+	"mat" : 90
+}
+{
+	"_id" : ObjectId("63c628a42f2e19e8415b6d01"),
+	"rno" : 1003,
+	"name" : "john",
+	"phy" : 21,
+	"che" : 16,
+	"mat" : 88
+}
+{
+	"_id" : ObjectId("63c628fc2f2e19e8415b6d02"),
+	"rno" : 1004,
+	"name" : "test1",
+	"phy" : 3,
+	"che" : 7,
+	"mat" : 8
+}
+> 
+> db.data.update({"rno":1003},{"che":50,"mat":50});
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.data.find().pretty()
+{
+	"_id" : ObjectId("63c6282d2f2e19e8415b6d00"),
+	"rno" : 1002,
+	"name" : "jany",
+	"phy" : 73,
+	"che" : 90,
+	"mat" : 90
+}
+{ "_id" : ObjectId("63c628a42f2e19e8415b6d01"), "che" : 50, "mat" : 50 }
+{
+	"_id" : ObjectId("63c628fc2f2e19e8415b6d02"),
+	"rno" : 1004,
+	"name" : "test1",
+	"phy" : 3,
+	"che" : 7,
+	"mat" : 8
+}
+> 
+> db.data.update({"rno":1003},{$set:{"che":50,"mat":50}});
+WriteResult({ "nMatched" : 0, "nUpserted" : 0, "nModified" : 0 })
+> db.data.update({"rno":1001},{$set:{"che":50,"mat":50}});
+WriteResult({ "nMatched" : 0, "nUpserted" : 0, "nModified" : 0 })
+> db.data.update({"rno":1001},{$set:{"che":50,"mat":50}});
+
+
+
+
+
+
+
+
+
+
+
+> db.data.update({"rno":1003},{$set:{"che":50,"mat":50}});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+> db.data.update({"rno":1002},{$set:{"che":50,"mat":50}});
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.data.find().pretty()
+{
+	"_id" : ObjectId("63c6282d2f2e19e8415b6d00"),
+	"rno" : 1002,
+	"name" : "jany",
+	"phy" : 73,
+	"che" : 50,
+	"mat" : 50
+}
+{ "_id" : ObjectId("63c628a42f2e19e8415b6d01"), "che" : 50, "mat" : 50 }
+{
+	"_id" : ObjectId("63c628fc2f2e19e8415b6d02"),
+	"rno" : 1004,
+	"name" : "test1",
+	"phy" : 3,
+	"che" : 7,
+	"mat" : 8
+}
+> db.data.update({"rno":1002},{$set:{"che":50,"mat":50}});
+> db.data.update({"rno":1012},{$set:{"che":60,"mat":60}},upsert=true);
+WriteResult({
+	"nMatched" : 0,
+	"nUpserted" : 1,
+	"nModified" : 0,
+	"_id" : ObjectId("63c8c647ba5f58733e0280b9")
+})
+> db.data.update({"rno":1002},{$set:{"che":60,"mat":60}},upsert=true);
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.data.drop()
+true
+> show collections
+data1
+emp
+empDetails
+> db.dropDatabase();
+{ "dropped" : "stackbatch910-17jan", "ok" : 1 }
+> show dbs
+admin                 0.000GB
+config                0.000GB
+local                 0.000GB
+mernstackbatch89      0.000GB
+postkrde              0.000GB
+reactbatch1011-28nov  0.000GB
+reactbatch910         0.000GB
+stackbatch1011        0.000GB
+stackbatch24-30dec    0.000GB
+stackbatch45          0.000GB
+stackbatch89-8dec     0.000GB
+stackbatch89-checck   0.000GB
+test                  0.000GB
+testdb                0.000GB
+> 
+> db.data.update({},{$unset:{"phy":1}})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

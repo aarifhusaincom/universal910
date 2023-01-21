@@ -1,0 +1,13 @@
+Steps to load & configure template page :-
+
+-> Move to application install template engine module as per requirement
+
+eg : pug , ejs
+command : npm install ejs
+
+-> Move to main app folder create a folder by any name (views : naming convention)
+
+-> Move to main app configuration file & configure , template engine 
+
+-> As per template engine configuration , create template page & load from specific route 
+

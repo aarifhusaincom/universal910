@@ -1,0 +1,65 @@
+Inheritance (is-a relationship) : It is an object oreinted feature which signify sharing of properties & behaviour of one class in another class is inheritance , used to implement modularity at application level
+
+ERP : College resources
+Admin , Student , Accounts , Staff
+
+Each module will be implemented as class & used to deploy code reusability & re-implementation
+
+                        is-a
+             Class A   <-----  Class B
+
+class A : Base - Parent - Super class 
+class B : Derived - Child - Sub class
+
+syntax :
+
+class Base
+{
+ data member
+ member methods 
+}
+
+class Derived extends Base
+{
+ data member
+ member methods 
+}
+
+Types of Inheritance :-
+
+-> Single level inheritance
+-> Multilevel level inheritance
+-> Hierarchical inheritance
+-> Multiple inheritance
+-> Hybrid inheritance
+
+-------------------------------------------------------
+
+Polymorphism : It is an OOPS feature which signify poly means many 
+morphism means forms 
+i.e one entity having different different implementation
+
+-> Overloading - (...) Rest operator
+
+-> Overriding - In case of inheritance , base class property & behaviour is acquired by derived class , in this case it is possible that both base & derived may contain data or functionality with same name considered as overriding. 
+
+In overriding base class implementation are overriden by derived class     
+
+-------------------------------------------------------
+
+Abstraction : It is an object oreinted feature which is used to implement application level security , by making application level data secure & functionality globally accessible.
+
+Note : In ES6 abstraction is all about nomenculature (naming conventions) -> a:data member , aData:method 
+
+-> public parameter : a , aData()
+
+-> private parameter : #a , #aData() 
+
+-------------------------------------------------------
+
+Encapsulation : It is an object oriented 
+feature , which signify wrapping of data & functionality into a single unit is encapsulation , as it wraps data hence also considered as data binding.
+
+Note : In oops object is unit which carries encapsulation
+
+-------------------------------------------------------
